@@ -1,196 +1,680 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AI YouTube Ideas — Beta for Beginner Creators</title>
-  <meta name="description" content="Connect your YouTube channel and get data-backed video ideas, growth alerts, and a 4-week starter plan — built for beginner creators." />
-  <meta property="og:title" content="AI YouTube Ideas — Beta for Beginner Creators" />
-  <meta property="og:description" content="Connect your YouTube channel and get data-backed video ideas, growth alerts, and a 4-week starter plan — built for beginner creators." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0ea5a4" />
-  <link rel="icon" href="data:,">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IdeaWatch — AI YouTube Ideas for Beginner Creators</title>
+  <meta name="description" content="Connect your YouTube channel and get data-backed video ideas, growth alerts, and a 4-week starter plan — built for beginner creators.">
+  <meta property="og:title" content="AI YouTube Ideas — Beta for Beginner Creators">
+  <meta property="og:description" content="Connect your YouTube channel and get data-backed video ideas, growth alerts, and a 4-week starter plan — built for beginner creators.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0ea5a4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#fcfcfc; --card:#ffffff; --muted:#606770; --accent:#0ea5a4; --accent-2:#028090; --maxw:980px;
-      --radius:12px; --shadow: 0 6px 20px rgba(13, 33, 45, 0.06);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    :root {
+      --primary: #0ea5a4;
+      --primary-dark: #028090;
+      --text: #0f172a;
+      --text-light: #64748b;
+      --background: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 5px 10px -5px rgba(0, 0, 0, 0.02);
+      --transition: all 0.3s ease;
     }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:#0b1220;line-height:1.45}
-    .wrap{max-width:var(--maxw);margin:36px auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .logo{font-weight:700;font-size:18px;color:var(--accent)}
-    .nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-size:14px}
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:28px;align-items:center}
-    @media(max-width:880px){ .hero{grid-template-columns:1fr; } .hero-right{order:-1} }
-    h1{font-size:28px;margin:0 0 12px}
-    p.lead{margin:0;color:var(--muted)}
-    .bullets{display:flex;gap:10px;margin-top:18px}
-    .bullet{background:linear-gradient(180deg,#ffffff,#fbfbfb);padding:12px;border-radius:10px;box-shadow:var(--shadow);flex:1;font-size:14px;color:#15202b}
-    .cta-row{margin-top:22px;display:flex;gap:12px}
-    .btn{background:var(--accent);color:white;padding:10px 16px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
-    .btn.secondary{background:transparent;color:var(--accent-2);border:2px solid var(--accent-2)}
-    .hero-right{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
-    .sample-title{font-weight:700;margin:0 0 8px}
-    .idea{background:#f7fffd;border-radius:10px;padding:10px;margin-bottom:10px}
-    .idea h4{margin:0 0 6px;font-size:15px}
-    .idea p{margin:0;font-size:13px;color:var(--muted)}
-    .form-wrap{margin-top:26px;border-radius:12px;overflow:hidden}
-    footer{margin-top:40px;padding-top:18px;border-top:1px solid #eee;color:var(--muted);font-size:13px}
-    .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
-    @media(max-width:680px){ .faq{grid-template-columns:1fr} }
-    .card{background:var(--card);padding:14px;border-radius:10px;box-shadow:var(--shadow)}
-    .small{font-size:13px;color:var(--muted)}
-    .connect-note{font-size:13px;color:var(--muted);margin-top:10px}
-    .sample-badge{display:inline-block;padding:5px 8px;font-size:12px;background:linear-gradient(90deg,#e6fffb,#ffffff);border-radius:999px;color:#055b52;margin-bottom:8px}
-    .center{display:flex;align-items:center;gap:8px}
-    a.inline{color:var(--accent-2);text-decoration:none;font-weight:600}
-    /* simple responsive iframe */
-    .iframe-wrap{width:100%;height:600px;max-height:900px;border-radius:10px;overflow:hidden;border:1px solid #e9f3f2}
-    .note-legal{font-size:12px;color:#7a7a7a;margin-top:8px}
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header */
+    header {
+      padding: 24px 0;
+      background-color: var(--background);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .nav {
+      display: flex;
+      gap: 32px;
+    }
+    
+    .nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .nav a:hover {
+      color: var(--primary);
+    }
+    
+    /* Hero Section */
+    .hero {
+      padding: 80px 0;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    
+    .hero-content h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    
+    .hero-content p {
+      font-size: 20px;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+    
+    .feature-item {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    
+    .feature-item h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    
+    .feature-item p {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 0;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    
+    .btn {
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-secondary:hover {
+      background-color: rgba(14, 165, 164, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    
+    .sample-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background: linear-gradient(90deg, #e6fffb, #ffffff);
+      color: #055b52;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    .idea-sample {
+      background: #f7fffd;
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .idea-sample h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    
+    .idea-sample p {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 0;
+    }
+    
+    /* How it works section */
+    .section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .section-title h2 {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+    
+    .section-title p {
+      font-size: 18px;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .step-card {
+      background: var(--card-bg);
+      padding: 32px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+    
+    .step-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .step-number {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    
+    .step-card h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+    
+    .step-card p {
+      color: var(--text-light);
+    }
+    
+    /* Sample section */
+    .sample-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .sample-card h3 {
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+    
+    .sample-card ul {
+      padding-left: 20px;
+      margin-top: 16px;
+    }
+    
+    .sample-card li {
+      margin-bottom: 8px;
+      color: var(--text-light);
+    }
+    
+    /* Form section */
+    .form-section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: var(--shadow);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .form-section h2 {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    
+    .form-section p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .submit-btn:hover {
+      background: var(--primary-dark);
+    }
+    
+    /* Privacy section */
+    .privacy-note {
+      background: #f1f5f9;
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 48px;
+      text-align: center;
+    }
+    
+    .privacy-note p {
+      color: var(--text-light);
+      font-size: 14px;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 80px;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    .copyright {
+      color: var(--text-light);
+      font-size: 14px;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .nav {
+        gap: 20px;
+      }
+      
+      .hero-content h1 {
+        font-size: 36px;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+      
+      .footer-links {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
+  <header>
+    <div class="container header-container">
       <div class="logo">IdeaWatch</div>
       <nav class="nav">
-        <a href="#howitworks">How it works</a>
+        <a href="#how-it-works">How It Works</a>
         <a href="#sample">Sample</a>
         <a href="#beta">Join Beta</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section class="hero">
-        <div>
-          <h1>AI that watches your YouTube channel & gives data-backed video ideas</h1>
-          <p class="lead">Connect your channel (read-only) and get personalized video ideas every week, plus simple growth alerts based on your real analytics — built for beginner creators.</p>
-
-          <div class="bullets" style="margin-top:18px">
-            <div class="bullet">Channel-driven ideas tailored to your best topics</div>
-            <div class="bullet">Weekly digest: 3 priority ideas + 1 growth alert</div>
-            <div class="bullet">Actionable 4-week starter plan — film faster, test smarter</div>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero container">
+      <div class="hero-content">
+        <h1>AI that watches your YouTube channel & gives data-backed video ideas</h1>
+        <p>Connect your channel and get personalized video ideas every week, plus growth alerts based on your analytics — built for beginner creators.</p>
+        
+        <div class="features-grid">
+          <div class="feature-item">
+            <h4>Tailored Ideas</h4>
+            <p>Channel-driven ideas for your best topics</p>
           </div>
-
-          <div class="cta-row">
-            <button class="btn" onclick="document.getElementById('form-section').scrollIntoView({behavior:'smooth'})">Join Beta — get free ideas</button>
-            <button class="btn secondary" onclick="window.location.href='#connect'">Connect YouTube (coming soon)</button>
+          <div class="feature-item">
+            <h4>Weekly Digest</h4>
+            <p>3 priority ideas + 1 growth alert</p>
           </div>
-
-          <p class="connect-note">We only request read-only analytics (e.g., CTR, watch time) to generate personalised ideas. No data sold. If under 16, please get parent/guardian permission.</p>
-        </div>
-
-        <aside class="hero-right">
-          <div class="sample-badge">Sample output</div>
-          <div style="margin-bottom:8px">
-            <div class="sample-title">Niche suggestion: Urban Vegan Cooking</div>
-            <div class="small">Why: growing local interest + low-competition mini-guides</div>
-          </div>
-
-          <div class="card" style="margin-bottom:12px">
-            <div class="idea">
-              <h4>Title: 5 Easy Vegan Dishes You Can Make in a Tiny Kitchen</h4>
-              <p>Format: Long-form tutorial • Keywords: vegan recipes, small kitchen, quick meals</p>
-            </div>
-            <div class="idea">
-              <h4>Title: $10 Vegan Grocery Haul — What I Actually Buy</h4>
-              <p>Format: Short/List • Keywords: budget vegan, grocery haul, vegan on a budget</p>
-            </div>
-            <div class="idea">
-              <h4>Title: 3-Ingredient Dinner Challenge (Vegan)</h4>
-              <p>Format: Short challenge • Keywords: 3-ingredient recipe, vegan challenge, easy cooking</p>
-            </div>
-          </div>
-
-          <div class="small">Want this personalized on your channel? Scroll down, tell us your topics, or paste a channel link — we’ll send 3 free ideas during beta.</div>
-        </aside>
-      </section>
-
-      <section id="howitworks" style="margin-top:28px">
-        <h2 style="margin:0 0 10px">How it works</h2>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <div class="card" style="flex:1;min-width:220px">
-            <strong>1. Connect (or paste)</strong>
-            <p class="small">You can connect via YouTube (OAuth) or paste your recent video links / screenshots for a manual review.</p>
-          </div>
-          <div class="card" style="flex:1;min-width:220px">
-            <strong>2. We analyse</strong>
-            <p class="small">We examine CTR, retention, topics and trending signals and create ideas tailored to what works for your channel.</p>
-          </div>
-          <div class="card" style="flex:1;min-width:220px">
-            <strong>3. You test</strong>
-            <p class="small">Get 10 ideas, a thumbnail prompt, and a simple 4-week plan. Rate outputs to improve future suggestions.</p>
+          <div class="feature-item">
+            <h4>Starter Plan</h4>
+            <p>4-week actionable plan to grow faster</p>
           </div>
         </div>
-      </section>
+        
+        <div class="cta-buttons">
+          <a href="#beta" class="btn btn-primary">Get Free Ideas</a>
+          <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+        </div>
+        
+        <p style="font-size: 14px; color: #64748b; margin-top: 20px;">
+          We only request read-only analytics to generate personalized ideas. No data sold.
+        </p>
+      </div>
+      
+      <div class="hero-card">
+        <span class="sample-badge">Sample Output</span>
+        <h3 style="margin-bottom: 12px;">Niche suggestion: Urban Vegan Cooking</h3>
+        <p style="color: #64748b; margin-bottom: 20px;">Why: growing local interest + low-competition mini-guides</p>
+        
+        <div class="idea-sample">
+          <h4>5 Easy Vegan Dishes You Can Make in a Tiny Kitchen</h4>
+          <p>Format: Long-form tutorial • Keywords: vegan recipes, small kitchen, quick meals</p>
+        </div>
+        
+        <div class="idea-sample">
+          <h4>$10 Vegan Grocery Haul — What I Actually Buy</h4>
+          <p>Format: Short/List • Keywords: budget vegan, grocery haul, vegan on a budget</p>
+        </div>
+        
+        <div class="idea-sample">
+          <h4>3-Ingredient Dinner Challenge (Vegan)</h4>
+          <p>Format: Short challenge • Keywords: 3-ingredient recipe, vegan challenge, easy cooking</p>
+        </div>
+        
+        <p style="font-size: 14px; color: #64748b; margin-top: 16px;">
+          Want this personalized for your channel? Tell us your topics below.
+        </p>
+      </div>
+    </section>
 
-      <section id="sample" style="margin-top:24px">
-        <h2 style="margin:0 0 10px">Sample idea card (detailed)</h2>
-        <div class="card">
-          <strong>Idea:</strong> <em>5 Easy Vegan Dishes You Can Make in a Tiny Kitchen</em>
-          <p class="small" style="margin-top:6px">Format: Long-form • Keywords: vegan recipes, small kitchen, quick meals</p>
-          <ul style="margin-top:8px;color:var(--muted)">
-            <li><strong>Hook (0–10s):</strong> “You won’t believe these 5 meals need only a single pan!”</li>
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>How It Works</h2>
+          <p>Simple process to get personalized YouTube growth recommendations</p>
+        </div>
+        
+        <div class="steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Connect or Share</h3>
+            <p>Connect via YouTube (OAuth) or share your recent video links for manual review.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>We Analyze</h3>
+            <p>We examine CTR, retention, topics and trending signals to create tailored ideas.</p>
+          </div>
+          
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>You Test & Grow</h3>
+            <p>Get 10 ideas, thumbnail prompts, and a 4-week plan. Rate outputs to improve suggestions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sample Section -->
+    <section id="sample" class="section" style="background-color: #f1f5f9;">
+      <div class="container">
+        <div class="section-title">
+          <h2>Detailed Idea Sample</h2>
+          <p>See what a complete, actionable idea looks like</p>
+        </div>
+        
+        <div class="sample-card">
+          <h3>5 Easy Vegan Dishes You Can Make in a Tiny Kitchen</h3>
+          <p><strong>Format:</strong> Long-form tutorial • <strong>Keywords:</strong> vegan recipes, small kitchen, quick meals</p>
+          
+          <ul>
+            <li><strong>Hook (0–10s):</strong> "You won't believe these 5 meals need only a single pan!"</li>
             <li><strong>Main points:</strong> Quick recipes, time-saving tips, equipment alternatives</li>
             <li><strong>CTA:</strong> Ask viewers to try the 3-ingredient hack and comment which was easiest</li>
-            <li><strong>Thumbnail idea:</strong> Two plated dishes side-by-side with bold text: “Tiny Kitchen Wins”</li>
+            <li><strong>Thumbnail idea:</strong> Two plated dishes side-by-side with bold text: "Tiny Kitchen Wins"</li>
           </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="beta" style="margin-top:26px">
-        <h2 style="margin:0 0 10px">Join Beta — get personalised ideas</h2>
-        <p class="small">Paste your channel link or 2–3 topics and we’ll email 3 free ideas. (Replace this form with your Google Form embed — instructions below.)</p>
-
-        <div id="form-section" class="form-wrap" style="margin-top:12px">
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfQ_PU7bD4ecJXPRjQLbk_-oHhh-FE1Ec_swUpysZGcja8NCA/viewform?embedded=true" width="640" height="1763" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-          <div class="iframe-wrap">
-            <iframe src="YOUR_GOOGLE_FORM_EMBED_URL"
-              width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-          </div>
-          <div class="note-legal">Tip: If you don't want to embed a form, use a plain mailto link instead. Replace the iframe with: <code>&lt;a href="mailto:youremail@example.com?subject=Beta%20Request"&gt;Email me to join&lt;/a&gt;</code></div>
+    <!-- Beta Form Section -->
+    <section id="beta" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Join Our Beta</h2>
+          <p>Get personalized YouTube ideas tailored to your channel</p>
         </div>
-      </section>
-
-      <section style="margin-top:26px">
-        <h3 style="margin:0 0 10px">Simple privacy note</h3>
-        <div class="card">
-          <p class="small">We only use your channel read-only analytics (CTR, views, watch time) to generate personalised ideas. We never sell data. You can request deletion of your data at any time by emailing <a class="inline" href="mailto:youremail@example.com">youremail@example.com</a>. If you are under 16, please get parent/guardian permission before sharing contact details.</p>
+        
+        <div class="form-section">
+          <h3>Get 3 Free Ideas</h3>
+          <p>Share your channel details and we'll send personalized video ideas</p>
+          
+          <form id="beta-form">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="topics">Your YouTube Topics/Niche</label>
+              <input type="text" id="topics" placeholder="e.g., Cooking, Tech Reviews, Vlogging" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="channel">Channel Link (optional)</label>
+              <input type="url" id="channel" placeholder="Paste your YouTube channel link">
+            </div>
+            
+            <button type="submit" class="submit-btn">Get My Free Ideas</button>
+          </form>
         </div>
-      </section>
-
-      <footer>
-        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
-          <div>
-            <strong>IdeaWatch</strong> — built to help beginner creators. <div class="small" style="margin-top:6px">Beta is free. Paid plans coming after launch.</div>
-          </div>
-          <div style="text-align:right">
-            <div><a class="inline" href="mailto:youremail@example.com">Contact</a> • <a class="inline" href="#howitworks">How it works</a></div>
-            <div class="small" style="margin-top:6px">Made with ♡ — If under 16, parental consent required for data testing.</div>
-          </div>
+        
+        <div class="privacy-note">
+          <p>We only use your channel's read-only analytics (CTR, views, watch time) to generate personalized ideas. We never sell data. You can request deletion at any time. If you are under 16, please get parent/guardian permission.</p>
         </div>
-      </footer>
-    </main>
-  </div>
+      </div>
+    </section>
+  </main>
 
-  <!-- Optional: basic analytics placeholder (replace MEASUREMENT_ID with your GA4 ID) -->
-  <!--
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEASUREMENT_ID"></script>
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <div class="logo" style="margin-bottom: 12px;">IdeaWatch</div>
+        <p class="copyright">Built to help beginner creators. Beta is free.</p>
+      </div>
+      
+      <div class="footer-links">
+        <a href="mailto:youremail@example.com">Contact</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MEASUREMENT_ID');
-  </script>
-  -->
-
-  <script>
-    // small nicety: scroll to form if URL contains #join
-    if(location.hash === "#join") {
-      setTimeout(()=>{document.getElementById('form-section').scrollIntoView({behavior:'smooth'})},300);
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+      // Form submission
+      const betaForm = document.getElementById('beta-form');
+      
+      betaForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Simple form validation
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const topics = document.getElementById('topics').value;
+        
+        if (name && email && topics) {
+          alert('Thank you! We\'ll send your personalized ideas soon.');
+          betaForm.reset();
+        } else {
+          alert('Please fill in all required fields.');
+        }
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
