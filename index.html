@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI YouTube Ideas — Beta for Beginner Creators</title>
+  <meta name="description" content="Connect your YouTube channel and get data-backed video ideas, growth alerts, and a 4-week starter plan — built for beginner creators." />
+  <meta property="og:title" content="AI YouTube Ideas — Beta for Beginner Creators" />
+  <meta property="og:description" content="Connect your YouTube channel and get data-backed video ideas, growth alerts, and a 4-week starter plan — built for beginner creators." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5a4" />
+  <link rel="icon" href="data:,">
+  <style>
+    :root{
+      --bg:#fcfcfc; --card:#ffffff; --muted:#606770; --accent:#0ea5a4; --accent-2:#028090; --maxw:980px;
+      --radius:12px; --shadow: 0 6px 20px rgba(13, 33, 45, 0.06);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0b1220;line-height:1.45}
+    .wrap{max-width:var(--maxw);margin:36px auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{font-weight:700;font-size:18px;color:var(--accent)}
+    .nav a{color:var(--muted);text-decoration:none;margin-left:14px;font-size:14px}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:28px;align-items:center}
+    @media(max-width:880px){ .hero{grid-template-columns:1fr; } .hero-right{order:-1} }
+    h1{font-size:28px;margin:0 0 12px}
+    p.lead{margin:0;color:var(--muted)}
+    .bullets{display:flex;gap:10px;margin-top:18px}
+    .bullet{background:linear-gradient(180deg,#ffffff,#fbfbfb);padding:12px;border-radius:10px;box-shadow:var(--shadow);flex:1;font-size:14px;color:#15202b}
+    .cta-row{margin-top:22px;display:flex;gap:12px}
+    .btn{background:var(--accent);color:white;padding:10px 16px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+    .btn.secondary{background:transparent;color:var(--accent-2);border:2px solid var(--accent-2)}
+    .hero-right{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+    .sample-title{font-weight:700;margin:0 0 8px}
+    .idea{background:#f7fffd;border-radius:10px;padding:10px;margin-bottom:10px}
+    .idea h4{margin:0 0 6px;font-size:15px}
+    .idea p{margin:0;font-size:13px;color:var(--muted)}
+    .form-wrap{margin-top:26px;border-radius:12px;overflow:hidden}
+    footer{margin-top:40px;padding-top:18px;border-top:1px solid #eee;color:var(--muted);font-size:13px}
+    .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+    @media(max-width:680px){ .faq{grid-template-columns:1fr} }
+    .card{background:var(--card);padding:14px;border-radius:10px;box-shadow:var(--shadow)}
+    .small{font-size:13px;color:var(--muted)}
+    .connect-note{font-size:13px;color:var(--muted);margin-top:10px}
+    .sample-badge{display:inline-block;padding:5px 8px;font-size:12px;background:linear-gradient(90deg,#e6fffb,#ffffff);border-radius:999px;color:#055b52;margin-bottom:8px}
+    .center{display:flex;align-items:center;gap:8px}
+    a.inline{color:var(--accent-2);text-decoration:none;font-weight:600}
+    /* simple responsive iframe */
+    .iframe-wrap{width:100%;height:600px;max-height:900px;border-radius:10px;overflow:hidden;border:1px solid #e9f3f2}
+    .note-legal{font-size:12px;color:#7a7a7a;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">IdeaWatch</div>
+      <nav class="nav">
+        <a href="#howitworks">How it works</a>
+        <a href="#sample">Sample</a>
+        <a href="#beta">Join Beta</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h1>AI that watches your YouTube channel & gives data-backed video ideas</h1>
+          <p class="lead">Connect your channel (read-only) and get personalized video ideas every week, plus simple growth alerts based on your real analytics — built for beginner creators.</p>
+
+          <div class="bullets" style="margin-top:18px">
+            <div class="bullet">Channel-driven ideas tailored to your best topics</div>
+            <div class="bullet">Weekly digest: 3 priority ideas + 1 growth alert</div>
+            <div class="bullet">Actionable 4-week starter plan — film faster, test smarter</div>
+          </div>
+
+          <div class="cta-row">
+            <button class="btn" onclick="document.getElementById('form-section').scrollIntoView({behavior:'smooth'})">Join Beta — get free ideas</button>
+            <button class="btn secondary" onclick="window.location.href='#connect'">Connect YouTube (coming soon)</button>
+          </div>
+
+          <p class="connect-note">We only request read-only analytics (e.g., CTR, watch time) to generate personalised ideas. No data sold. If under 16, please get parent/guardian permission.</p>
+        </div>
+
+        <aside class="hero-right">
+          <div class="sample-badge">Sample output</div>
+          <div style="margin-bottom:8px">
+            <div class="sample-title">Niche suggestion: Urban Vegan Cooking</div>
+            <div class="small">Why: growing local interest + low-competition mini-guides</div>
+          </div>
+
+          <div class="card" style="margin-bottom:12px">
+            <div class="idea">
+              <h4>Title: 5 Easy Vegan Dishes You Can Make in a Tiny Kitchen</h4>
+              <p>Format: Long-form tutorial • Keywords: vegan recipes, small kitchen, quick meals</p>
+            </div>
+            <div class="idea">
+              <h4>Title: $10 Vegan Grocery Haul — What I Actually Buy</h4>
+              <p>Format: Short/List • Keywords: budget vegan, grocery haul, vegan on a budget</p>
+            </div>
+            <div class="idea">
+              <h4>Title: 3-Ingredient Dinner Challenge (Vegan)</h4>
+              <p>Format: Short challenge • Keywords: 3-ingredient recipe, vegan challenge, easy cooking</p>
+            </div>
+          </div>
+
+          <div class="small">Want this personalized on your channel? Scroll down, tell us your topics, or paste a channel link — we’ll send 3 free ideas during beta.</div>
+        </aside>
+      </section>
+
+      <section id="howitworks" style="margin-top:28px">
+        <h2 style="margin:0 0 10px">How it works</h2>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div class="card" style="flex:1;min-width:220px">
+            <strong>1. Connect (or paste)</strong>
+            <p class="small">You can connect via YouTube (OAuth) or paste your recent video links / screenshots for a manual review.</p>
+          </div>
+          <div class="card" style="flex:1;min-width:220px">
+            <strong>2. We analyse</strong>
+            <p class="small">We examine CTR, retention, topics and trending signals and create ideas tailored to what works for your channel.</p>
+          </div>
+          <div class="card" style="flex:1;min-width:220px">
+            <strong>3. You test</strong>
+            <p class="small">Get 10 ideas, a thumbnail prompt, and a simple 4-week plan. Rate outputs to improve future suggestions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sample" style="margin-top:24px">
+        <h2 style="margin:0 0 10px">Sample idea card (detailed)</h2>
+        <div class="card">
+          <strong>Idea:</strong> <em>5 Easy Vegan Dishes You Can Make in a Tiny Kitchen</em>
+          <p class="small" style="margin-top:6px">Format: Long-form • Keywords: vegan recipes, small kitchen, quick meals</p>
+          <ul style="margin-top:8px;color:var(--muted)">
+            <li><strong>Hook (0–10s):</strong> “You won’t believe these 5 meals need only a single pan!”</li>
+            <li><strong>Main points:</strong> Quick recipes, time-saving tips, equipment alternatives</li>
+            <li><strong>CTA:</strong> Ask viewers to try the 3-ingredient hack and comment which was easiest</li>
+            <li><strong>Thumbnail idea:</strong> Two plated dishes side-by-side with bold text: “Tiny Kitchen Wins”</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="beta" style="margin-top:26px">
+        <h2 style="margin:0 0 10px">Join Beta — get personalised ideas</h2>
+        <p class="small">Paste your channel link or 2–3 topics and we’ll email 3 free ideas. (Replace this form with your Google Form embed — instructions below.)</p>
+
+        <div id="form-section" class="form-wrap" style="margin-top:12px">
+          <!-- REPLACE THE SRC BELOW with the embed URL from Google Forms:
+               1) Open your Google Form -> Send -> Embed (< >) -> copy the src URL part
+               2) Replace YOUR_GOOGLE_FORM_EMBED_URL with the full URL Google gives you
+               Example src starts with: https://docs.google.com/forms/d/e/...
+          -->
+          <div class="iframe-wrap">
+            <iframe src="YOUR_GOOGLE_FORM_EMBED_URL"
+              width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          </div>
+          <div class="note-legal">Tip: If you don't want to embed a form, use a plain mailto link instead. Replace the iframe with: <code>&lt;a href="mailto:youremail@example.com?subject=Beta%20Request"&gt;Email me to join&lt;/a&gt;</code></div>
+        </div>
+      </section>
+
+      <section style="margin-top:26px">
+        <h3 style="margin:0 0 10px">Simple privacy note</h3>
+        <div class="card">
+          <p class="small">We only use your channel read-only analytics (CTR, views, watch time) to generate personalised ideas. We never sell data. You can request deletion of your data at any time by emailing <a class="inline" href="mailto:youremail@example.com">youremail@example.com</a>. If you are under 16, please get parent/guardian permission before sharing contact details.</p>
+        </div>
+      </section>
+
+      <footer>
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+          <div>
+            <strong>IdeaWatch</strong> — built to help beginner creators. <div class="small" style="margin-top:6px">Beta is free. Paid plans coming after launch.</div>
+          </div>
+          <div style="text-align:right">
+            <div><a class="inline" href="mailto:youremail@example.com">Contact</a> • <a class="inline" href="#howitworks">How it works</a></div>
+            <div class="small" style="margin-top:6px">Made with ♡ — If under 16, parental consent required for data testing.</div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Optional: basic analytics placeholder (replace MEASUREMENT_ID with your GA4 ID) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MEASUREMENT_ID');
+  </script>
+  -->
+
+  <script>
+    // small nicety: scroll to form if URL contains #join
+    if(location.hash === "#join") {
+      setTimeout(()=>{document.getElementById('form-section').scrollIntoView({behavior:'smooth'})},300);
+    }
+  </script>
+</body>
+</html>
