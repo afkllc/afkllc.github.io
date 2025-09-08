@@ -52,9 +52,15 @@
   <main id="home" tabindex="-1">
     <!-- Hero -->
     <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-background">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+      </div>
       <div class="container hero-inner">
         <div class="hero-content animate-on-scroll">
-          <div class="label">Empowering Education</div>
+          <div class="label pulse-animation">Empowering Education</div>
           <h1 id="hero-heading" class="hero-title">For all — confident teaching designed for learners & families</h1>
           <p class="lead">Confident teaching — designed for learners and families. Practical support, personalised tuition and community-first programmes.</p>
 
@@ -66,22 +72,10 @@
 
         <div class="hero-art css-illustration animate-on-scroll" aria-hidden="true">
           <!-- Decorative illustration: simple layered shapes (no external asset dependency) -->
-          <svg viewBox="0 0 420 300" class="illustration-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-hidden="true">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1">
-                <stop offset="0" stop-color="var(--bb-mint)" />
-                <stop offset="1" stop-color="var(--bb-accent)" />
-              </linearGradient>
-            </defs>
-
-            <rect x="8" y="8" rx="16" ry="16" width="404" height="284" fill="url(#g1)" opacity="0.08"></rect>
-            <g transform="translate(20,22)">
-              <rect x="0" y="0" rx="12" width="260" height="170" fill="white" opacity="0.96" stroke="rgba(5,38,41,0.04)"/>
-              <circle cx="320" cy="120" r="48" fill="var(--bb-yellow)" opacity="0.95"/>
-              <rect x="40" y="30" width="180" height="14" rx="6" fill="var(--bb-blue)"></rect>
-              <rect x="40" y="56" width="140" height="10" rx="6" fill="var(--bb-muted)"></rect>
-            </g>
-          </svg>
+          <div class="bitesize-circle circle-1"></div>
+          <div class="bitesize-circle circle-2"></div>
+          <div class="bitesize-square"></div>
+          <div class="bitesize-triangle"></div>
         </div>
       </div>
     </section>
@@ -103,14 +97,14 @@
             <p>All profits are reinvested in programmes that support families, educators and local communities.</p>
 
             <ul class="bullets">
-              <li>Free & subsidised tutoring for families in need</li>
-              <li>Practical, engaging workshops</li>
-              <li>Structured homeschooling support and mentoring</li>
-              <li>Parent workshops that actually help</li>
+              <li><i class="fas fa-check-circle"></i> Free & subsidised tutoring for families in need</li>
+              <li><i class="fas fa-check-circle"></i> Practical, engaging workshops</li>
+              <li><i class="fas fa-check-circle"></i> Structured homeschooling support and mentoring</li>
+              <li><i class="fas fa-check-circle"></i> Parent workshops that actually help</li>
             </ul>
           </div>
 
-          <div class="about-art" aria-hidden="true">
+          <div class="about-art animate-on-scroll" aria-hidden="true">
             <div class="about-art-inner">
               <div class="big">Creative learning for every child</div>
               <div class="meta">Started in 2018, registered as a CIC in 2020.</div>
@@ -133,24 +127,28 @@
             <div class="service-icon"><i class="fas fa-user-graduate"></i></div>
             <h3>Personalised Tutoring</h3>
             <p>One-on-one academic coaching for ages 5–18, online and in-person.</p>
+            <div class="service-hover-effect"></div>
           </article>
 
           <article class="service-card animate-on-scroll tilt">
             <div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div>
             <h3>Interactive Workshops</h3>
             <p>Carefully structured, hands-on sessions to build skills and confidence.</p>
+            <div class="service-hover-effect"></div>
           </article>
 
           <article class="service-card animate-on-scroll tilt">
             <div class="service-icon"><i class="fas fa-home"></i></div>
             <h3>Homeschooling Support</h3>
             <p>Curriculum packs, lesson plans and mentor guidance for families.</p>
+            <div class="service-hover-effect"></div>
           </article>
 
           <article class="service-card animate-on-scroll tilt">
             <div class="service-icon"><i class="fas fa-hands-helping"></i></div>
             <h3>Parent Support</h3>
             <p>Practical sessions to help parents structure home learning with confidence.</p>
+            <div class="service-hover-effect"></div>
           </article>
         </div>
       </div>
