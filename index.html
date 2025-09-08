@@ -15,7 +15,85 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Homemade Teachers</title>
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Animated background (inlined SVG — recommended) -->
+  <div class="animated-bg" aria-hidden="true">
+    <!-- Inline SVG (same content as bg-animated.svg) -->
+    <svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+      <style>
+        :root{
+          --bb-blue:#005EB8;
+          --bb-accent:#7A63FF;
+          --bb-mint:#66D2C2;
+          --bb-yellow:#FFD400;
+          --bg:#f6fbff;
+        }
+        svg{display:block}
+        .blob{filter:drop-shadow(0 10px 30px rgba(5,38,41,0.04));mix-blend-mode:screen}
+        .b1{fill:var(--bb-mint);opacity:0.20; transform-origin:50% 50%; animation:float1 14s ease-in-out infinite;}
+        .b2{fill:var(--bb-accent);opacity:0.14; transform-origin:50% 50%; animation:float2 18s ease-in-out infinite;}
+        .b3{fill:var(--bb-yellow);opacity:0.12; transform-origin:50% 50%; animation:float3 20s ease-in-out infinite;}
+        .dots circle{fill:rgba(122,99,255,0.08)}
+        @keyframes float1 {
+          0% { transform: translate(0px,0px) scale(1); }
+          50% { transform: translate(24px,-18px) scale(1.05); }
+          100% { transform: translate(0px,0px) scale(1); }
+        }
+        @keyframes float2 {
+          0% { transform: translate(0px,0px) scale(1); }
+          50% { transform: translate(-28px,22px) scale(1.06); }
+          100% { transform: translate(0px,0px) scale(1); }
+        }
+        @keyframes float3 {
+          0% { transform: translate(0px,0px) scale(1); }
+          50% { transform: translate(20px,26px) scale(1.04); }
+          100% { transform: translate(0px,0px) scale(1); }
+        }
+
+        .dot1{animation:drift 26s linear infinite; opacity:0.6}
+        .dot2{animation:drift 32s linear infinite; animation-delay:3s; opacity:0.45}
+        .dot3{animation:drift 40s linear infinite; animation-delay:6s; opacity:0.35}
+        @keyframes drift {
+          0% { transform: translateY(0px) translateX(0px) }
+          50% { transform: translateY(-28px) translateX(18px) }
+          100% { transform: translateY(0px) translateX(0px) }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .b1,.b2,.b3,.dot1,.dot2,.dot3 { animation: none !important; }
+        }
+      </style>
+
+      <rect width="1600" height="900" fill="url(#bggrad)" opacity="1"></rect>
+
+      <g class="blob" transform="translate(0,0)">
+        <path class="b1" d="M420 120c80-40 200-18 260 34s80 120 36 188-152 106-240 84-148-116-116-190 26-116 60-116z" />
+        <path class="b2" d="M1160 140c-70-36-170-24-232 18s-96 100-62 168 130 116 212 96 146-110 120-178-20-74-38-104z" />
+        <path class="b3" d="M900 560c50 46 136 78 202 56s108-96 88-156-110-90-182-68-168 94-108 168z"/>
+      </g>
+
+      <g class="dots" transform="translate(0,0)" opacity="0.9">
+        <circle class="dot1" cx="120" cy="760" r="6"/>
+        <circle class="dot2" cx="300" cy="120" r="8"/>
+        <circle class="dot3" cx="1450" cy="200" r="5"/>
+        <circle class="dot1" cx="1350" cy="620" r="7"/>
+        <circle class="dot2" cx="900" cy="80" r="4"/>
+      </g>
+    </svg>
+  </div>
   <!-- Header -->
   <header class="site-header" role="banner">
     <div class="header-inner container">
