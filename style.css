@@ -35,7 +35,49 @@ body{
   padding-top:88px; /* space for fixed header */
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
+/* (Place this at top of your styles.css or merge into your current file) */
 
+/* --- Animated background container --- */
+.animated-bg{
+  position: fixed;
+  inset: 0;
+  z-index: 0;                /* behind site header (header kept at z-index:1200) */
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.98;
+  mix-blend-mode: normal;
+  transform: translateZ(0);  /* promote to its own layer */
+}
+
+/* Ensure the SVG scales responsively and stays behind content */
+.animated-bg svg,
+.animated-bg img{
+  width: 140%;
+  height: auto;
+  min-height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-48%);
+  will-change: transform;
+  opacity: 0.95;
+  filter: saturate(1.02) contrast(1.02);
+}
+
+/* make sure main content sits above background */
+body > *:not(.animated-bg){
+  position: relative;
+  z-index: 1;
+}
+
+/* small parallax nudge class (applied by JS) */
+.animated-bg.move-x { transform: translateZ(0); } /* placeholder */
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .animated-bg svg,
+  .animated-bg img { animation: none !important; transition: none !important; }
+}
 /* container */
 .container{width:92%;max-width:1180px;margin:0 auto;padding:0 14px}
 
