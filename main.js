@@ -4,7 +4,7 @@
 // - Stat counters (parse numbers from DOM)
 // - Card tilt
 // - FAQ accordion
-// - Formspree handler (preserves your form but keeps UX)
+// - Formspree handler (preerves your form but keeps UX)
 
 document.addEventListener('DOMContentLoaded', () => {
 
