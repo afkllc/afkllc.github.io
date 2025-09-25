@@ -10,6 +10,9 @@
       *{
         font-family: monospace;
       }
+      body{
+        background-color: rgb(0, 0, 0);
+      }
       .box{
         padding: 30px;
         justify-content: center;
@@ -17,19 +20,27 @@
         width: 50%;
         margin: 0 auto;
         height: 100%;
-        background-color: rgb(255, 255, 255);
-        border: 1px solid black;
+        display: flex;
+        border: 1px solid hsl(0, 0%, 5%);
+        flex-direction: column;
+        flex-wrap: wrap;
+        flex-grow: 1;
+
       }
       .title{
         font-size: 40px;
+        color: hsl(0,0%,95%);
+        text-align: left;
       }
       .status{
         text-align: center;
         margin-bottom: 40px;
-        background-color: black;
-        color: white;
+        background-color: hsl(0, 0%, 5%);
+        border-radius: 20px;
+        color: hsl(0,0%,95%);
         vertical-align: middle;
-        padding: 5px;
+
+        padding: 10px, 10px;
       }
       .converter{
         text-align: center;
@@ -48,11 +59,12 @@
         margin: 10px;
         overflow: auto;
         cursor: pointer;
-        background-color: #f9f9f9;
         min-width: 130px;
         box-shadow: 0px -4px 16px 0px rgba(255, 0, 0, 0.2);
         padding: 10px 14px;
         transition-duration: 1s;
+        background-color: hsl(0, 0%, 17%);
+        color: hsl(0,0%, 95%);
       }
       .dropdown-content:hover{
         box-shadow: 0px -4px 50px 0px rgba(255, 0, 0, 0.2);
@@ -61,10 +73,11 @@
       .inputValue{
         margin: 10px;
         box-shadow: 0px -4px 16px 0px rgba(255, 230, 0, 0.2);
-        background-color: #f9f9f9;
         min-width: 130px;
         padding: 10px 14px;
         transition-duration: 1s;
+        background-color: hsl(0, 0%, 17%);
+        color: hsl(0,0%, 95%);
       }
       .inputValue:hover{
         box-shadow: 0px -4px 50px 0px rgba(255, 231, 18, 0.2);
@@ -79,11 +92,13 @@
         text-align: center;
         vertical-align: middle;
         transition-duration: 1s;
+        background-color: hsl(0, 0%, 17%);
+        color: hsl(0,0%, 95%);
       }
       .convertBtn:hover{
         box-shadow: 0px -4px 20px 0px rgba(0, 0, 0, 0.2);
         width: 70px;
-        background-color: darkslategray;
+        background-color: hsl(231, 37%, 14%);
         color: rgb(255, 255, 255);
       }
       .output{
@@ -92,6 +107,9 @@
         resize: none;
         box-sizing: border-box;
         width: 100%;
+        height: 50%;
+        flex: 100%;
+        
       }
       .outputO{
         padding-top: 20px;
@@ -127,7 +145,7 @@
         </div>
         <!-- disabled- -->
         <div class="inputGroup" style="border: none;">
-            <label class="outputO">(Output)</label><br>
+            <label class="outputO"></label><br>
             <textarea class="output" disabled></textarea>
         </div>
     </div>
