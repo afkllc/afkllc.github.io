@@ -12,25 +12,33 @@
       }
       body{
         background-color: rgb(0, 0, 0);
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .box{
         padding: 30px;
         justify-content: center;
         align-items: center;
         width: 50%;
-        margin: 0 auto;
-        height: 100%;
+        min-width: 400px;
+        height: auto;
         display: flex;
         border: 1px solid hsl(0, 0%, 5%);
         flex-direction: column;
-        flex-wrap: wrap;
-        flex-grow: 1;
-
+        background-color: hsl(0, 0%, 10%);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
       }
       .title{
         font-size: 40px;
         color: hsl(0,0%,95%);
-        text-align: left;
+        text-align: center;
+        margin-bottom: 20px;
+        width: 100%;
       }
       .status{
         text-align: center;
@@ -39,67 +47,100 @@
         border-radius: 20px;
         color: hsl(0,0%,95%);
         vertical-align: middle;
-
-        padding: 10px, 10px;
+        padding: 10px;
+        width: 80%;
+        transition: all 0.3s ease;
+      }
+      .status.ready {
+        background-color: hsl(120, 100%, 10%);
+        color: hsl(120, 100%, 80%);
+      }
+      .status.error {
+        background-color: hsl(0, 100%, 10%);
+        color: hsl(0, 100%, 80%);
       }
       .converter{
         text-align: center;
         font-size: 15px;
+        width: 100%;
       }
       .inputGroup{
-
+        margin-bottom: 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       .dropdown{
         text-align: center;
-        padding: auto;
-
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-
       .dropdown-content{
         margin: 10px;
         overflow: auto;
         cursor: pointer;
-        min-width: 130px;
+        min-width: 200px;
         box-shadow: 0px -4px 16px 0px rgba(255, 0, 0, 0.2);
         padding: 10px 14px;
-        transition-duration: 1s;
+        transition-duration: 0.3s;
         background-color: hsl(0, 0%, 17%);
         color: hsl(0,0%, 95%);
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
       }
       .dropdown-content:hover{
-        box-shadow: 0px -4px 50px 0px rgba(255, 0, 0, 0.2);
-        rotate: 2deg;
+        box-shadow: 0px -4px 20px 0px rgba(255, 0, 0, 0.4);
+        transform: rotate(1deg);
       }
       .inputValue{
         margin: 10px;
         box-shadow: 0px -4px 16px 0px rgba(255, 230, 0, 0.2);
-        min-width: 130px;
+        min-width: 200px;
         padding: 10px 14px;
-        transition-duration: 1s;
+        transition-duration: 0.3s;
         background-color: hsl(0, 0%, 17%);
         color: hsl(0,0%, 95%);
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
       }
       .inputValue:hover{
-        box-shadow: 0px -4px 50px 0px rgba(255, 231, 18, 0.2);
-        rotate: 2deg;
+        box-shadow: 0px -4px 20px 0px rgba(255, 231, 18, 0.4);
+        transform: rotate(1deg);
+      }
+      .inputValue:focus{
+        outline: none;
+        box-shadow: 0px -4px 20px 0px rgba(255, 231, 18, 0.6);
       }
       .convertBtn{
         margin-top: 20px;
         cursor:pointer;
         box-shadow: 0px -4px 16px 0px rgba(72, 255, 0, 0.2);
-        min-width: 130px;
-        padding: 10px 14px;
+        min-width: 200px;
+        padding: 12px 14px;
         text-align: center;
         vertical-align: middle;
-        transition-duration: 1s;
+        transition-duration: 0.3s;
         background-color: hsl(0, 0%, 17%);
         color: hsl(0,0%, 95%);
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
       }
-      .convertBtn:hover{
-        box-shadow: 0px -4px 20px 0px rgba(0, 0, 0, 0.2);
-        width: 70px;
+      .convertBtn:hover:not(:disabled){
+        box-shadow: 0px -4px 20px 0px rgba(72, 255, 0, 0.4);
         background-color: hsl(231, 37%, 14%);
         color: rgb(255, 255, 255);
+        transform: scale(1.05);
+      }
+      .convertBtn:disabled{
+        opacity: 0.5;
+        cursor: not-allowed;
       }
       .output{
         margin-top: 30px;
@@ -107,46 +148,56 @@
         resize: none;
         box-sizing: border-box;
         width: 100%;
-        height: 50%;
-        flex: 100%;
-        
+        height: 150px;
+        background-color: hsl(0, 0%, 10%);
+        color: hsl(120, 100%, 80%);
+        border: 1px solid hsl(0, 0%, 20%);
+        border-radius: 5px;
+        padding: 15px;
+        font-size: 16px;
+        font-family: monospace;
       }
       .outputO{
         padding-top: 20px;
         text-align: center;
         color: green;
-
+        font-size: 18px;
+        width: 100%;
+      }
+      label {
+        color: hsl(0,0%,95%);
+        margin-bottom: 8px;
+        font-size: 16px;
       }
 
     </style>
-
 </head>
 <body>
     <div class="box">
         <h1 class="title">Binary/Decimal Converter</h1>
         
-        <div class="status">Status: Loading ... </div>
+        <div class="status" id="status">Status: Loading Pyodide...</div>
         
         <div class="dropdown">
             <div class="inputGroup">
-                <label for="dropdown-content"></label>
-                <select class="dropdown-content">
+                <label for="conversionType">Conversion Type:</label>
+                <select class="dropdown-content" id="conversionType">
                     <option value="1">Decimal to Binary</option>
                     <option value="2">Binary to Decimal</option>
                 </select>
             </div>
             
             <div class="inputGroup">
-                <label for="inputValue"></label>
-                <input type="text" class="inputValue" placeholder="Enter a number">
+                <label for="inputValue">Enter a number:</label>
+                <input type="text" class="inputValue" id="inputValue" placeholder="Enter a number">
             </div>
             
-            <button class="convertBtn" onclick="convert()"  disabled>Convert</button>
+            <button class="convertBtn" id="convertBtn" onclick="convert()" disabled>Convert</button>
         </div>
-        <!-- disabled- -->
-        <div class="inputGroup" style="border: none;">
-            <label class="outputO"></label><br>
-            <textarea class="output" disabled></textarea>
+        
+        <div class="inputGroup">
+            <label class="outputO">Result:</label>
+            <textarea class="output" id="output" disabled></textarea>
         </div>
     </div>
 
@@ -157,6 +208,10 @@
         // Initialize Pyodide
         async function initializePyodide() {
             try {
+                // Show loading status
+                const statusElement = document.getElementById('status');
+                statusElement.textContent = "Status: Loading Pyodide...";
+                
                 pyodide = await loadPyodide();
                 
                 // Load your Python conversion functions
@@ -194,13 +249,17 @@ def binaryToDecimal(n):
         return "Error: Please enter a valid binary number"
 `);
                 
-                document.getElementById('status').className = 'status ready';
-                document.getElementById('status').textContent = 'Ready!';
+                // Update status and enable button
+                statusElement.textContent = "Status: Ready!";
+                statusElement.classList.add('ready');
                 document.getElementById('convertBtn').disabled = false;
                 isPyodideReady = true;
             } catch (error) {
-                document.getElementById('status').className = 'status error';
-                document.getElementById('status').textContent = 'Error initializing Pyodide: ' + error.message;
+                // Handle initialization error
+                const statusElement = document.getElementById('status');
+                statusElement.textContent = "Status: Error initializing Pyodide";
+                statusElement.classList.add('error');
+                console.error("Pyodide initialization error:", error);
             }
         }
         
@@ -243,7 +302,6 @@ def binaryToDecimal(n):
         });
         
         // Initialize when page loads
-        //made by iiisa(utttc
         initializePyodide();
     </script>
 </body>
