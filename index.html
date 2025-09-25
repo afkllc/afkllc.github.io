@@ -5,33 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binary/Decimal Converter</title>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.28.3/full/pyodide.js"></script>
+
+    <style>
+      *{
+        font-family: monospace;
+      }
+      .box{
+        padding: 30px;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        margin: 0 auto;
+        height: 100%;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid black;
+      }
+      .title{
+        font-size: 40px;
+      }
+      .status{
+        text-align: center;
+        margin-bottom: 40px;
+        background-color: black;
+        color: white;
+        vertical-align: middle;
+        padding: 5px;
+      }
+      .converter{
+        text-align: center;
+        font-size: 15px;
+      }
+      .inputGroup{
+
+      }
+      .dropdown{
+        text-align: center;
+        padding: auto;
+
+      }
+
+      .dropdown-content{
+        margin: 10px;
+        overflow: auto;
+        cursor: pointer;
+        background-color: #f9f9f9;
+        min-width: 130px;
+        box-shadow: 0px -4px 16px 0px rgba(255, 0, 0, 0.2);
+        padding: 10px 14px;
+        transition-duration: 1s;
+      }
+      .dropdown-content:hover{
+        box-shadow: 0px -4px 50px 0px rgba(255, 0, 0, 0.2);
+        rotate: 2deg;
+      }
+      .inputValue{
+        margin: 10px;
+        box-shadow: 0px -4px 16px 0px rgba(255, 230, 0, 0.2);
+        background-color: #f9f9f9;
+        min-width: 130px;
+        padding: 10px 14px;
+        transition-duration: 1s;
+      }
+      .inputValue:hover{
+        box-shadow: 0px -4px 50px 0px rgba(255, 231, 18, 0.2);
+        rotate: 2deg;
+      }
+      .convertBtn{
+        margin-top: 20px;
+        cursor:pointer;
+        box-shadow: 0px -4px 16px 0px rgba(72, 255, 0, 0.2);
+        min-width: 130px;
+        padding: 10px 14px;
+        text-align: center;
+        vertical-align: middle;
+        transition-duration: 1s;
+      }
+      .convertBtn:hover{
+        box-shadow: 0px -4px 20px 0px rgba(0, 0, 0, 0.2);
+        width: 70px;
+        background-color: darkslategray;
+        color: rgb(255, 255, 255);
+      }
+      .output{
+        margin-top: 30px;
+        align-self: center;
+        resize: none;
+        box-sizing: border-box;
+        width: 100%;
+      }
+      .outputO{
+        padding-top: 20px;
+        text-align: center;
+        color: green;
+
+      }
+
+    </style>
+
 </head>
 <body>
-    <div class="container">
-        <h1>Binary/Decimal Converter</h1>
+    <div class="box">
+        <h1 class="title">Binary/Decimal Converter</h1>
         
-        <div id="status" class="status loading">Initializing Pyodide...</div>
+        <div class="status">Status: Loading ... </div>
         
-        <div class="converter">
-            <div class="input-group">
-                <label for="conversionType">Conversion Type:</label>
-                <select id="conversionType">
+        <div class="dropdown">
+            <div class="inputGroup">
+                <label for="dropdown-content"></label>
+                <select class="dropdown-content">
                     <option value="1">Decimal to Binary</option>
                     <option value="2">Binary to Decimal</option>
                 </select>
             </div>
             
-            <div class="input-group">
-                <label for="inputValue">Input Value:</label>
-                <input type="text" id="inputValue" placeholder="Enter a number">
+            <div class="inputGroup">
+                <label for="inputValue"></label>
+                <input type="text" class="inputValue" placeholder="Enter a number">
             </div>
             
-            <button id="convertBtn" onclick="convert()" disabled>Convert</button>
+            <button class="convertBtn" onclick="convert()"  >Convert</button>
         </div>
-        
-        <div class="input-group">
-            <label for="output">Result:</label>
-            <textarea id="output" disabled></textarea>
+        <!-- disabled- -->
+        <div class="inputGroup" style="border: none;">
+            <label class="outputO">(Output)</label><br>
+            <textarea class="output" disabled></textarea>
         </div>
     </div>
 
@@ -133,4 +230,3 @@ def binaryToDecimal(n):
     </script>
 </body>
 </html>
-
