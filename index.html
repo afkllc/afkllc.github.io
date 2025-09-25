@@ -18,6 +18,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        background: -webkit-linear-gradient(#2b2b2b, #000000);
       }
       .box{
         padding: 30px;
@@ -32,6 +33,7 @@
         background-color: hsl(0, 0%, 10%);
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+
       }
       .title{
         font-size: 40px;
@@ -43,7 +45,7 @@
       .status{
         text-align: center;
         margin-bottom: 40px;
-        background-color: hsl(0, 0%, 5%);
+        background-color: hsl(0, 72%, 17%);
         border-radius: 20px;
         color: hsl(0,0%,95%);
         vertical-align: middle;
@@ -52,8 +54,12 @@
         transition: all 0.3s ease;
       }
       .status.ready {
-        background-color: hsl(120, 100%, 10%);
+        background-color: green;
         color: hsl(120, 100%, 80%);
+        transition: 2s;
+      .status.ready:hover{
+        background-color: rgb(0, 214, 0);
+      }
       }
       .status.error {
         background-color: hsl(0, 100%, 10%);
@@ -125,6 +131,7 @@
         text-align: center;
         vertical-align: middle;
         transition-duration: 0.3s;
+        
         background-color: hsl(0, 0%, 17%);
         color: hsl(0,0%, 95%);
         border: none;
@@ -156,9 +163,11 @@
         padding: 15px;
         font-size: 16px;
         font-family: monospace;
+        
       }
       .outputO{
-        padding-top: 20px;
+        padding-top: 40px;
+        margin-bottom: -10px;
         text-align: center;
         color: green;
         font-size: 18px;
@@ -176,7 +185,7 @@
     <div class="box">
         <h1 class="title">Binary/Decimal Converter</h1>
         
-        <div class="status" id="status">Status: Loading Pyodide...</div>
+        <div class="status" id="status">Status: Loading...</div>
         
         <div class="dropdown">
             <div class="inputGroup">
@@ -205,16 +214,16 @@
         let pyodide;
         let isPyodideReady = false;
         
-        // Initialize Pyodide
+        
         async function initializePyodide() {
             try {
-                // Show loading status
+                
                 const statusElement = document.getElementById('status');
-                statusElement.textContent = "Status: Loading Pyodide...";
+                statusElement.textContent = "Status: Loading...";
                 
                 pyodide = await loadPyodide();
                 
-                // Load your Python conversion functions
+                
                 await pyodide.runPython(`
 def decimalToBinary(n):
     try:
@@ -249,21 +258,21 @@ def binaryToDecimal(n):
         return "Error: Please enter a valid binary number"
 `);
                 
-                // Update status and enable button
-                statusElement.textContent = "Status: Ready!";
+                
+                statusElement.textContent = "Status: Ready";
                 statusElement.classList.add('ready');
                 document.getElementById('convertBtn').disabled = false;
                 isPyodideReady = true;
             } catch (error) {
-                // Handle initialization error
+                
                 const statusElement = document.getElementById('status');
-                statusElement.textContent = "Status: Error initializing Pyodide";
+                statusElement.textContent = "Status: Error with Pyodide";
                 statusElement.classList.add('error');
                 console.error("Pyodide initialization error:", error);
             }
         }
         
-        // Conversion function
+        
         async function convert() {
             if (!isPyodideReady) {
                 document.getElementById('output').value = "Pyodide is not ready yet. Please wait.";
@@ -294,14 +303,14 @@ def binaryToDecimal(n):
             }
         }
         
-        // Allow Enter key to trigger conversion
+        
         document.getElementById('inputValue').addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 convert();
             }
         });
         
-        // Initialize when page loads
+        
         initializePyodide();
     </script>
 </body>
